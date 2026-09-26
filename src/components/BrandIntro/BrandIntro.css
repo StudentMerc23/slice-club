@@ -1,0 +1,93 @@
+.brand-intro {
+  width: 100%;
+
+  padding: 34px 0 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--beige);
+}
+
+.brand-intro__slogan {
+  width: 300px;
+  height: 60px;
+  overflow: visible;
+}
+
+.brand-intro__slogan-text {
+  fill: var(--green);
+
+  font-family: var(--font-main);
+  font-size: 6.4px;
+
+  letter-spacing: 1.4px;
+}
+
+.brand-intro__logo {
+  width: 300px;
+  height: 68px;
+
+  margin-top: -2px;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .brand-intro {
+    padding: 44px 0 36px;
+  }
+
+  .brand-intro__slogan {
+    width: 360px;
+    height: 72px;
+  }
+
+  .brand-intro__slogan-text {
+    font-size: 7.2px;
+    letter-spacing: 1.5px;
+  }
+
+  .brand-intro__logo {
+    width: 360px;
+    height: 80px;
+  }
+}
+
+/* LAPTOP + DESKTOP */
+@media (min-width: 1024px) {
+  .brand-intro {
+    padding: 52px 0 42px;
+  }
+
+  .brand-intro__slogan {
+    width: 430px;
+    height: 82px;
+  }
+
+  .brand-intro__slogan-text {
+    font-size: 8.2px;
+    letter-spacing: 1.7px;
+  }
+
+  .brand-intro__logo {
+    width: 430px;
+    height: 96px;
+  }
+}
+
+/* LARGE DESKTOP */
+@media (min-width: 1440px) {
+  .brand-intro__slogan {
+    width: 470px;
+    height: 88px;
+  }
+
+  .brand-intro__logo {
+    width: 480px;
+    height: 105px;
+  }
+}

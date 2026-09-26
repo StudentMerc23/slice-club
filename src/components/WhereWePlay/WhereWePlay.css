@@ -1,0 +1,327 @@
+.where-we-play {
+  width: 100%;
+  padding: 28px 14px;
+  background-color: var(--green);
+}
+
+.where-we-play__layout {
+  width: 100%;
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.6fr;
+  gap: 10px;
+
+  align-items: stretch;
+}
+
+/* LEFT SIDE */
+
+.where-we-play__info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.where-we-play__title {
+  margin: 0;
+
+  color: var(--beige);
+
+  font-family: var(--font-main);
+  font-size: 22px;
+  font-weight: 400;
+
+  line-height: 0.95;
+  text-align: left;
+}
+
+.where-we-play__course-info {
+  margin-top: 12px;
+}
+
+.where-we-play__course-name {
+  margin: 0;
+
+  color: var(--beige);
+
+  font-family: var(--font-main);
+  font-size: 9px;
+  font-weight: 400;
+
+  line-height: 1.15;
+}
+
+.where-we-play__location {
+  margin-top: 3px;
+
+  color: var(--beige);
+
+  font-family: var(--font-main);
+  font-size: 7px;
+
+  letter-spacing: 0.4px;
+}
+
+/* HOLES + PAR */
+
+.where-we-play__small-stats {
+  width: 100%;
+
+  margin-top: auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+/* STAT BOXES */
+
+.course-stat {
+  min-height: 45px;
+
+  padding: 5px 3px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--beige);
+  color: var(--green);
+}
+
+.course-stat__label {
+  font-family: var(--font-main);
+  font-size: 7px;
+
+  line-height: 1;
+  text-align: center;
+}
+
+.course-stat__value {
+  margin-top: 3px;
+
+  font-family: var(--font-secondary);
+  font-size: 20px;
+
+  line-height: 1;
+}
+
+.course-stat--yards {
+  width: 100%;
+  min-height: 43px;
+
+  margin-top: 6px;
+}
+
+/* RIGHT SIDE */
+
+.where-we-play__image {
+  width: 100%;
+  height: 460px;
+
+  min-height: 460px;
+  max-height: none;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .where-we-play {
+    padding: 42px 32px;
+  }
+
+  .where-we-play__layout {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    grid-template-columns: 0.9fr 1.5fr;
+    gap: 20px;
+  }
+
+  .where-we-play__title {
+    font-size: 32px;
+    line-height: 0.95;
+  }
+
+  .where-we-play__course-info {
+    margin-top: 18px;
+  }
+
+  .where-we-play__course-name {
+    font-size: 13px;
+  }
+
+  .where-we-play__location {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+
+  .where-we-play__small-stats {
+    gap: 10px;
+  }
+
+  .course-stat {
+    min-height: 64px;
+    padding: 8px 6px;
+  }
+
+  .course-stat__label {
+    font-size: 9px;
+  }
+
+  .course-stat__value {
+    margin-top: 4px;
+    font-size: 26px;
+  }
+
+  .course-stat--yards {
+    min-height: 60px;
+    margin-top: 10px;
+  }
+
+  .where-we-play__image {
+    min-height: 310px;
+  }
+}
+
+/* LAPTOP + DESKTOP */
+/* LAPTOP + DESKTOP */
+@media (min-width: 1024px) {
+  .where-we-play {
+    width: 100%;
+    padding: 40px 36px;
+  }
+
+  .where-we-play__layout {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+
+    grid-template-columns:
+      minmax(360px, 0.75fr)
+      minmax(0, 1.45fr);
+
+    gap: 36px;
+
+    align-items: stretch;
+  }
+
+  .where-we-play__info {
+    min-width: 0;
+    height: 100%;
+  }
+
+  .where-we-play__title {
+    font-size: 48px;
+    line-height: 0.92;
+  }
+
+  .where-we-play__course-info {
+    margin-top: 28px;
+  }
+
+  .where-we-play__course-name {
+    font-size: 17px;
+    line-height: 1.2;
+  }
+
+  .where-we-play__location {
+    margin-top: 7px;
+
+    font-size: 13px;
+    letter-spacing: 0.6px;
+  }
+
+  .where-we-play__small-stats {
+    width: 100%;
+
+    margin-top: auto;
+
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .course-stat {
+    min-height: 94px;
+    padding: 12px 8px;
+  }
+
+  .course-stat__label {
+    font-size: 11px;
+    letter-spacing: 0.8px;
+  }
+
+  .course-stat__value {
+    margin-top: 6px;
+    font-size: 36px;
+  }
+
+  .course-stat--yards {
+    min-height: 88px;
+    margin-top: 14px;
+  }
+
+  .where-we-play__image {
+    width: 100%;
+    height: 520px;
+
+    min-height: 520px;
+    max-height: none;
+
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/* LARGE DESKTOP */
+/* LARGE DESKTOP */
+@media (min-width: 1440px) {
+  .where-we-play {
+    padding: 48px 42px;
+  }
+
+  .where-we-play__layout {
+    gap: 42px;
+
+    grid-template-columns:
+      minmax(420px, 0.75fr)
+      minmax(0, 1.5fr);
+  }
+
+  .where-we-play__title {
+    font-size: 54px;
+  }
+
+  .where-we-play__course-name {
+    font-size: 19px;
+  }
+
+  .where-we-play__location {
+    font-size: 14px;
+  }
+
+  .course-stat {
+    min-height: 104px;
+  }
+
+  .course-stat__label {
+    font-size: 12px;
+  }
+
+  .course-stat__value {
+    font-size: 40px;
+  }
+
+  .course-stat--yards {
+    min-height: 96px;
+  }
+
+  .where-we-play__image {
+    height: 500px;
+    min-height: 500px;
+  }
+}

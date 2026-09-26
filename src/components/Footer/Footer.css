@@ -1,0 +1,89 @@
+.footer {
+  width: 100%;
+
+  padding: 28px 20px 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--green);
+}
+
+.footer__logo {
+  width: 200px;
+  height: 60px;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer__copyright {
+  margin-top: 14px;
+
+  color: var(--beige);
+
+  font-family: var(--font-secondary);
+  font-size: 8px;
+  font-weight: 400;
+
+  letter-spacing: 0.6px;
+  text-align: center;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .footer {
+    padding: 38px 20px 32px;
+  }
+
+  .footer__logo {
+    width: 240px;
+    height: 70px;
+  }
+
+  .footer__copyright {
+    margin-top: 16px;
+
+    font-size: 10px;
+    letter-spacing: 0.7px;
+  }
+}
+
+/* LAPTOP + DESKTOP */
+@media (min-width: 1024px) {
+  .footer {
+    padding: 46px 20px 38px;
+  }
+
+  .footer__logo {
+    width: 300px;
+    height: 110px;
+  }
+
+  .footer__copyright {
+    margin-top: 18px;
+
+    font-size: 11px;
+    letter-spacing: 0.8px;
+  }
+}
+
+/* LARGE DESKTOP */
+@media (min-width: 1440px) {
+  .footer {
+    padding: 52px 20px 42px;
+  }
+
+  .footer__logo {
+    width: 310px;
+    height: 90px;
+  }
+
+  .footer__copyright {
+    margin-top: 20px;
+
+    font-size: 12px;
+    letter-spacing: 0.9px;
+  }
+}
