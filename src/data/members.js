@@ -1,6 +1,6 @@
-import hector from "../assets/images/members/hector.jpeg";
-import diego from "../assets/images/members/diego.jpeg";
-import dylan from "../assets/images/members/dylan.jpeg";
+import hector from "../assets/images/members/Hector.jpeg";
+import diego from "../assets/images/members/Diego.jpeg";
+import dylan from "../assets/images/members/Dylan.jpeg";
 
 const members = [
   {
