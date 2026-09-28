@@ -5,10 +5,19 @@ import "./HeroSlider.css";
 const SLIDE_INTERVAL = 5000;
 const SWIPE_THRESHOLD = 50;
 
+const TRACKPAD_THRESHOLD = 45;
+const TRACKPAD_COOLDOWN = 500;
+
 function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const pointerStartX = useRef(null);
+
+  // Trackpad swipe
+  const trackpadMovement = useRef(0);
+  const trackpadLocked = useRef(false);
+  const trackpadResetTimer = useRef(null);
+  const trackpadLockTimer = useRef(null);
 
   const nextSlide = () => {
     setCurrentSlide((previousSlide) =>
@@ -22,6 +31,7 @@ function HeroSlider() {
     );
   };
 
+  // AUTO SLIDE
   useEffect(() => {
     const timeout = setTimeout(() => {
       nextSlide();
@@ -30,6 +40,15 @@ function HeroSlider() {
     return () => clearTimeout(timeout);
   }, [currentSlide]);
 
+  // CLEAN UP TRACKPAD TIMERS
+  useEffect(() => {
+    return () => {
+      clearTimeout(trackpadResetTimer.current);
+      clearTimeout(trackpadLockTimer.current);
+    };
+  }, []);
+
+  // TOUCH / MOUSE DRAG
   const handlePointerDown = (event) => {
     pointerStartX.current = event.clientX;
   };
@@ -74,6 +93,77 @@ function HeroSlider() {
     pointerStartX.current = null;
   };
 
+  // LAPTOP TRACKPAD SWIPE
+  const handleTrackpadSwipe = (event) => {
+    /*
+      Ignore normal vertical scrolling.
+
+      Only react when the gesture is
+      primarily horizontal.
+    */
+    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) {
+      return;
+    }
+
+    event.preventDefault();
+
+    /*
+      Don't allow one trackpad gesture
+      to skip through multiple slides.
+    */
+    if (trackpadLocked.current) {
+      return;
+    }
+
+    /*
+      A trackpad swipe produces many small wheel events,
+      so we add them together.
+    */
+    trackpadMovement.current += event.deltaX;
+
+    /*
+      Reset the accumulated movement if the user stops
+      swiping for a moment.
+    */
+    clearTimeout(trackpadResetTimer.current);
+
+    trackpadResetTimer.current = setTimeout(() => {
+      trackpadMovement.current = 0;
+    }, 150);
+
+    /*
+      Swipe left -> next image
+    */
+    if (trackpadMovement.current >= TRACKPAD_THRESHOLD) {
+      nextSlide();
+
+      trackpadMovement.current = 0;
+      trackpadLocked.current = true;
+
+      clearTimeout(trackpadLockTimer.current);
+
+      trackpadLockTimer.current = setTimeout(() => {
+        trackpadLocked.current = false;
+      }, TRACKPAD_COOLDOWN);
+    }
+
+    /*
+      Swipe right -> previous image
+    */
+    if (trackpadMovement.current <= -TRACKPAD_THRESHOLD) {
+      previousSlide();
+
+      trackpadMovement.current = 0;
+      trackpadLocked.current = true;
+
+      clearTimeout(trackpadLockTimer.current);
+
+      trackpadLockTimer.current = setTimeout(() => {
+        trackpadLocked.current = false;
+      }, TRACKPAD_COOLDOWN);
+    }
+  };
+
   return (
     <section
       id="inicio"
@@ -81,6 +171,7 @@ function HeroSlider() {
       aria-label="Fotos de Slice Club"
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
+      onWheel={handleTrackpadSwipe}
     >
       <div
         className="hero-slider__track"

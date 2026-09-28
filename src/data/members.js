@@ -11,12 +11,21 @@ const members = [
     image: hector,
 
     stats: {
-      handicap: "—",
-      averageScore: "—",
-      bestRound: "—",
-      roundsPlayed: "—",
-      birdies: "—",
-      longestDrive: "—",
+      handicap: "29.3",
+      averageScore: "100",
+      bestRound: "96",
+      roundsPlayed: "Break 90" /*SOCRING GOAL*/,
+      birdies: "3.3" /*PAR OR BETTER*/,
+      longestDrive: "245 Yds",
+    },
+
+    bag: {
+      driver: "TaylorMade (2008 Burner)",
+      woods: "TaylorMade (2008 Burner)",
+      irons: "Ping (Rapture)",
+      wedges: "Titleist (Vokey Design)",
+      putter: "Scotty Cameron 2005 Newport 2",
+      ball: "Callaway Supersoft",
     },
   },
 
@@ -31,9 +40,18 @@ const members = [
       handicap: "—",
       averageScore: "—",
       bestRound: "—",
-      roundsPlayed: "—",
+      roundsPlayed: "Break 90",
       birdies: "—",
       longestDrive: "—",
+    },
+
+    bag: {
+      driver: "—",
+      woods: "—",
+      irons: "—",
+      wedges: "—",
+      putter: "—",
+      ball: "—",
     },
   },
 
@@ -48,9 +66,18 @@ const members = [
       handicap: "—",
       averageScore: "—",
       bestRound: "—",
-      roundsPlayed: "—",
+      roundsPlayed: "Break 90",
       birdies: "—",
       longestDrive: "—",
+    },
+
+    bag: {
+      driver: "—",
+      woods: "—",
+      irons: "—",
+      wedges: "—",
+      putter: "—",
+      ball: "—",
     },
   },
 ];

@@ -2,6 +2,7 @@ import hero1 from "../assets/images/hero/Los3.jpeg";
 import hero2 from "../assets/images/hero/suspalos.png";
 import hero3 from "../assets/images/hero/Hector.jpeg";
 import hero4 from "../assets/images/hero/Diego.jpeg";
+import hero5 from "../assets/images/hero/Dylan.jpeg";
 
 const heroImages = [
   {
@@ -22,6 +23,11 @@ const heroImages = [
   {
     id: 4,
     src: hero4,
+    alt: "Diego con el slice",
+  },
+  {
+    id: 5,
+    src: hero5,
     alt: "Dyaln con el slice",
   },
 ];

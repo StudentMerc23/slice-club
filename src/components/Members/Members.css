@@ -143,7 +143,7 @@
 }
 
 .member-details--visible {
-  max-height: 500px;
+  max-height: 700px;
   margin-top: 20px;
   opacity: 1;
 }
@@ -196,6 +196,167 @@
   font-size: 19px;
 
   line-height: 1;
+}
+
+/* TABS */
+
+.member-details__tabs {
+  width: 100%;
+  margin-bottom: 14px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  border-bottom: 1px solid rgba(188, 185, 142, 0.3);
+}
+
+.member-tab {
+  position: relative;
+
+  padding: 10px 6px 12px;
+
+  color: rgba(188, 185, 142, 0.55);
+  background: transparent;
+
+  font-family: var(--font-main);
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: 0.8px;
+  text-align: center;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.member-tab::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -1px;
+
+  width: 0;
+  height: 2px;
+
+  background-color: var(--beige);
+
+  transform: translateX(-50%);
+
+  transition: width 0.3s ease;
+}
+
+.member-tab--active {
+  color: var(--beige);
+}
+
+.member-tab--active::after {
+  width: 70%;
+}
+
+/* TAB CONTENT TRANSITION */
+
+.member-details__panel {
+  width: 100%;
+
+  display: grid;
+
+  overflow: hidden;
+}
+
+.member-tab-panel {
+  width: 100%;
+
+  grid-column: 1;
+  grid-row: 1;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.7s;
+
+  will-change: opacity, transform;
+}
+
+/* ACTIVE PANEL */
+
+.member-tab-panel--active {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateX(0);
+
+  pointer-events: auto;
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
+}
+
+/* STATS EXIT TO LEFT */
+.member-tab-panel--left {
+  transform: translateX(-12px);
+}
+
+/* BAG EXIT TO RIGHT */
+
+.member-tab-panel--right {
+  transform: translateX(12px);
+}
+
+/* BAG GRID */
+
+.member-details__bag {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 10px;
+}
+
+.bag-item {
+  min-height: 68px;
+
+  padding: 9px 7px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--beige);
+  color: var(--green);
+
+  text-align: center;
+}
+
+.bag-item__label {
+  font-family: var(--font-main);
+  font-size: 8px;
+  font-weight: 400;
+
+  letter-spacing: 0.8px;
+}
+
+.bag-item__value {
+  margin-top: 5px;
+
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  line-height: 1.15;
+
+  overflow-wrap: anywhere;
 }
 
 /* TABLET */
@@ -260,6 +421,34 @@
   .member-stat__value {
     font-size: 23px;
   }
+
+  .member-details__tabs {
+    margin-bottom: 18px;
+  }
+
+  .member-tab {
+    padding: 12px 8px 14px;
+
+    font-size: 12px;
+  }
+
+  .member-details__bag {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .bag-item {
+    min-height: 82px;
+    padding: 10px 8px;
+  }
+
+  .bag-item__label {
+    font-size: 9px;
+  }
+
+  .bag-item__value {
+    font-size: 16px;
+  }
 }
 
 /* LAPTOP + DESKTOP */
@@ -316,6 +505,11 @@
   .member-stat {
     min-height: 82px;
     padding: 10px 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .member-stat__label {
@@ -326,6 +520,37 @@
   .member-stat__value {
     margin-top: 5px;
     font-size: 27px;
+  }
+
+  .member-details__tabs {
+    margin-bottom: 22px;
+  }
+
+  .member-tab {
+    padding: 13px 10px 15px;
+
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .member-details__bag {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .bag-item {
+    min-height: 94px;
+    padding: 12px 10px;
+  }
+
+  .bag-item__label {
+    font-size: 10px;
+  }
+
+  .bag-item__value {
+    margin-top: 7px;
+
+    font-size: 18px;
   }
 }
 
@@ -371,6 +596,22 @@
 
   .member-stat__value {
     font-size: 30px;
+  }
+
+  .member-tab {
+    font-size: 15px;
+  }
+
+  .bag-item {
+    min-height: 100px;
+  }
+
+  .bag-item__label {
+    font-size: 11px;
+  }
+
+  .bag-item__value {
+    font-size: 20px;
   }
 }
 

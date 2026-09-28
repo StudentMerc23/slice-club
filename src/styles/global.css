@@ -4,6 +4,8 @@
   --green: #3c492b;
   --beige: #bcb98e;
 
+  --background: #bcb98e;
+
   --font-main: "DM Serif Display", serif;
   --font-secondary: "Anton", sans-serif;
 }
@@ -36,7 +38,7 @@ body {
   width: 100%;
   min-height: 100vh;
 
-  background-color: var(--beige);
+  background-color: var(--background);
   overflow-x: hidden;
 }
 

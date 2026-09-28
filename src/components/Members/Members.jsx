@@ -6,19 +6,26 @@ import MemberCard from "./MemberCard";
 
 function Members() {
   const [selectedMemberId, setSelectedMemberId] = useState(null);
+  const [activeTab, setActiveTab] = useState("stats");
 
   const selectedMember = members.find(
     (member) => member.id === selectedMemberId,
   );
 
   const handleSelectMember = (memberId) => {
-    setSelectedMemberId((currentMemberId) =>
-      currentMemberId === memberId ? null : memberId,
-    );
+    if (selectedMemberId === memberId) {
+      setSelectedMemberId(null);
+      setActiveTab("stats");
+      return;
+    }
+
+    setSelectedMemberId(memberId);
+    setActiveTab("stats");
   };
 
   const handleShowAll = () => {
     setSelectedMemberId(null);
+    setActiveTab("stats");
   };
 
   return (
@@ -58,55 +65,139 @@ function Members() {
         onClick={(event) => event.stopPropagation()}
       >
         {selectedMember && (
-          <div className="member-details__stats">
-            <div className="member-stat">
-              <span className="member-stat__label">HANDICAP</span>
+          <>
+            <div className="member-details__tabs">
+              <button
+                type="button"
+                className={`member-tab ${
+                  activeTab === "stats" ? "member-tab--active" : ""
+                }`}
+                onClick={() => setActiveTab("stats")}
+              >
+                ESTADÍSTICAS
+              </button>
 
-              <span className="member-stat__value">
-                {selectedMember.stats.handicap}
-              </span>
+              <button
+                type="button"
+                className={`member-tab ${
+                  activeTab === "bag" ? "member-tab--active" : ""
+                }`}
+                onClick={() => setActiveTab("bag")}
+              >
+                Club Set
+              </button>
             </div>
 
-            <div className="member-stat">
-              <span className="member-stat__label">AVG SCORE</span>
+            <div className="member-details__panel">
+              {/* ESTADÍSTICAS */}
+              <div
+                className={`member-tab-panel ${
+                  activeTab === "stats"
+                    ? "member-tab-panel--active"
+                    : "member-tab-panel--left"
+                }`}
+                aria-hidden={activeTab !== "stats"}
+              >
+                <div className="member-details__stats">
+                  <div className="member-stat">
+                    <span className="member-stat__label">HANDICAP</span>
+                    <span className="member-stat__value">
+                      {selectedMember.stats.handicap}
+                    </span>
+                  </div>
 
-              <span className="member-stat__value">
-                {selectedMember.stats.averageScore}
-              </span>
+                  <div className="member-stat">
+                    <span className="member-stat__label">AVG SCORE</span>
+                    <span className="member-stat__value">
+                      {selectedMember.stats.averageScore}
+                    </span>
+                  </div>
+
+                  <div className="member-stat">
+                    <span className="member-stat__label">BEST ROUND</span>
+                    <span className="member-stat__value">
+                      {selectedMember.stats.bestRound}
+                    </span>
+                  </div>
+
+                  <div className="member-stat">
+                    <span className="member-stat__label">SCORING GOAL</span>
+                    <span className="member-stat__value">
+                      {selectedMember.stats.roundsPlayed}
+                    </span>
+                  </div>
+
+                  <div className="member-stat">
+                    <span className="member-stat__label">PAR OR BETTER</span>
+                    <span className="member-stat__value">
+                      {selectedMember.stats.birdies}
+                    </span>
+                  </div>
+
+                  <div className="member-stat">
+                    <span className="member-stat__label">LONGEST DRIVE</span>
+                    <span className="member-stat__value">
+                      {selectedMember.stats.longestDrive}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* CLUB SET */}
+              <div
+                className={`member-tab-panel ${
+                  activeTab === "bag"
+                    ? "member-tab-panel--active"
+                    : "member-tab-panel--right"
+                }`}
+                aria-hidden={activeTab !== "bag"}
+              >
+                <div className="member-details__bag">
+                  <div className="bag-item">
+                    <span className="bag-item__label">DRIVER</span>
+                    <span className="bag-item__value">
+                      {selectedMember.bag.driver}
+                    </span>
+                  </div>
+
+                  <div className="bag-item">
+                    <span className="bag-item__label">WOODS</span>
+                    <span className="bag-item__value">
+                      {selectedMember.bag.woods}
+                    </span>
+                  </div>
+
+                  <div className="bag-item">
+                    <span className="bag-item__label">IRONS</span>
+                    <span className="bag-item__value">
+                      {selectedMember.bag.irons}
+                    </span>
+                  </div>
+
+                  <div className="bag-item">
+                    <span className="bag-item__label">WEDGES</span>
+                    <span className="bag-item__value">
+                      {selectedMember.bag.wedges}
+                    </span>
+                  </div>
+
+                  <div className="bag-item">
+                    <span className="bag-item__label">PUTTER</span>
+                    <span className="bag-item__value">
+                      {selectedMember.bag.putter}
+                    </span>
+                  </div>
+
+                  <div className="bag-item">
+                    <span className="bag-item__label">BALL</span>
+                    <span className="bag-item__value">
+                      {selectedMember.bag.ball}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div className="member-stat">
-              <span className="member-stat__label">BEST ROUND</span>
-
-              <span className="member-stat__value">
-                {selectedMember.stats.bestRound}
-              </span>
-            </div>
-
-            <div className="member-stat">
-              <span className="member-stat__label">ROUNDS</span>
-
-              <span className="member-stat__value">
-                {selectedMember.stats.roundsPlayed}
-              </span>
-            </div>
-
-            <div className="member-stat">
-              <span className="member-stat__label">BIRDIES</span>
-
-              <span className="member-stat__value">
-                {selectedMember.stats.birdies}
-              </span>
-            </div>
-
-            <div className="member-stat">
-              <span className="member-stat__label">LONGEST DRIVE</span>
-
-              <span className="member-stat__value">
-                {selectedMember.stats.longestDrive}
-              </span>
-            </div>
-          </div>
+          </>
         )}
       </div>
     </section>
